@@ -9295,7 +9295,7 @@ async def admin_add_gateway(request: Request, db: Session = Depends(get_db), use
                         oauth_config["scopes"] = scopes
 
                 # Handle credentials location (body or header)
-                oauth_credentials_location = str(form.get("oauth_credentials_location", "body"))
+                oauth_credentials_location = str(form.get("oauth_credentials_location", ""))
                 if oauth_credentials_location in ("body", "header"):
                     oauth_config["credentials_location"] = oauth_credentials_location
 
