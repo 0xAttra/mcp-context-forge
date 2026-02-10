@@ -12489,6 +12489,11 @@ async def admin_add_a2a_agent(
                     if scopes:
                         oauth_config["scopes"] = scopes
 
+                # Handle credentials location (body or header)
+                oauth_credentials_location = str(form.get("oauth_credentials_location", ""))
+                if oauth_credentials_location in ("body", "header"):
+                    oauth_config["credentials_location"] = oauth_credentials_location
+
                 LOGGER.info(f"✅ Assembled OAuth config from UI form fields: grant_type={oauth_grant_type}, issuer={oauth_issuer}")
                 LOGGER.info(f"DEBUG: Complete oauth_config = {oauth_config}")
 
